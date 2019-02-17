@@ -1,0 +1,73 @@
+@import "src/theme/theme-variables";
+@import "src/variables";
+// .navbar {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   z-index: 1;
+// }
+// .brand {
+//   color: mat-color($app-primary, "default-contrast");
+//   text-decoration: none;
+//   padding-right: 1rem;
+// }
+// .menu-button {
+//   margin-right: 1rem;
+// }
+.header {
+    padding: 10px;
+    background: $header;
+    box-shadow: 1px 1px 1px grey;
+}
+
+.user-info {
+    .username {
+        position: relative;
+        top: -7px;
+    }
+    .profile-pic {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.dropdown {
+    cursor: pointer;
+    display: none; // display: block;
+    z-index: 999;
+    position: absolute;
+    right: 30px;
+    top: 45px;
+    .arrow-up {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 18px solid grey;
+        z-index: 999;
+        position: absolute;
+        top: 3px;
+        right: 12px;
+    }
+    mat-card {
+        width: 200px;
+        padding: 5px 10px;
+        .menu-item {
+            padding: 7px 10px;
+            border-radius: 3px;
+            font-size: .7em;
+            &:hover {
+                background: $primary;
+                color: $white;
+            }
+        }
+    }
+}

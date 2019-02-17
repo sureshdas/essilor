@@ -1,0 +1,58 @@
+@import "src/variables";
+table {
+    width: 100%;
+}
+
+// th {
+//     background: $primary;
+//     padding: 10px 0;
+//     color: $white;
+//     font-size: 16px;
+//     text-align: left !important;
+//     flex: 1 !important;
+// }
+// :host /deep/ .slk-sort-header-button {
+//     margin: 0 !important;
+//     padding-left: 20px;
+// }
+// tr {
+//     display: flex !important;
+// }
+// td {
+//     font-size: 16px;
+//     text-align: left;
+//     padding-left: 20px;
+//     flex: 1 !important;
+// }
+// .tree-invisible {
+//     display: none;
+// }
+// .button-group.icon button {
+//     height: 40px;
+//     mat-icon {
+//         padding: 2px;
+//         margin: 0;
+//     }
+// }
+// :host /deep/ .table-slk-grid tbody {
+//     height: 90% !important;
+// }
+// .black-bg {
+//     background: rgb(70, 67, 67);
+// }
+.m-button {
+    margin: 0;
+}
+
+th {
+    background: $primary;
+    padding: 10px 0;
+    color: $white;
+    font-size: 16px;
+    text-align: left !important;
+}
+
+td {
+    font-size: 16px;
+    text-align: left; // padding-left: 20px;
+}

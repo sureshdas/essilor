@@ -1,0 +1,88 @@
+<!-- <mat-toolbar class="mat-elevation-z6 navbar" color="primary">
+  <div fxHide.gt-sm fxLayoutAlign="start center">
+    <button class="menu-button" mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="title"> { { title } }
+
+    </span>
+  </div>
+  <div fxHide.lt-md>
+    <a class="brand" href="https://github.com/ngx-rocket" translate>APP_NAME</a>
+    <button mat-button routerLink="/home" routerLinkActive="active">
+      <mat-icon>home</mat-icon>
+      <span translate>Home</span>
+    </button>
+    <button mat-button routerLink="/about" routerLinkActive="active">
+      <mat-icon>info</mat-icon>
+      <span translate>About</span>
+    </button>
+  </div>
+  <span fxFlex></span>
+  <button mat-icon-button [matMenuTriggerFor]="languageMenu">
+    <mat-icon>language</mat-icon>
+  </button>
+  <mat-menu #languageMenu="matMenu">
+    <button mat-menu-item *ngFor="let language of languages" (click)="setLanguage(language)"> { { language } }
+
+    </button>
+  </mat-menu>
+  <button mat-icon-button [matMenuTriggerFor]="userMenu">
+    <mat-icon>person</mat-icon>
+  </button>
+  <mat-menu #userMenu="matMenu">
+    <mat-list>
+      <mat-list-item>
+        <span translate>Logged in as</span>&nbsp;
+        <b> { { username } }
+
+        </b>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+    <button mat-menu-item (click)="logout()" translate>Logout</button>
+  </mat-menu>
+  </mat-toolbar> -->
+
+<div fxFill fxLayout="row" class="header">
+
+  <div class="logo" fxFlex="14">
+    <img src="assets/logo.png" style="width: 100%;">
+  </div>
+
+  <div fxFlex="1 1 auto"></div>
+
+  <div style="position: relative;">
+    <!-- <span class="icon-container">
+      <mat-icon>home</mat-icon>
+    </span>
+    <span class="icon-container">
+      <mat-icon>chat_bubble</mat-icon>
+    </span> -->
+    <!-- <span class="icon-container">
+      <mat-icon>notifications</mat-icon>
+    </span>&nbsp; &nbsp; -->
+    <!-- <span style="padding: 5px; position: relative; top: -7px;">|</span> -->
+    <span class="user-info" (click)="showDropdown()" appClickOutside (clickMatch)="showDropdown($event)">
+      <span class="username">{{username}}</span>
+      <span class="icon-container">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </span>
+      <span class="profile-pic">
+        <img src="assets/user.png">
+      </span>
+    </span>
+
+    <div class="dropdown">
+      <!-- <div class="arrow-up"></div> -->
+      <mat-card>
+        <!-- <div class="menu-item" routerLink="/profile">
+          <i class="fas fa-user"></i>&nbsp;&nbsp;Profile</div> -->
+        <!-- <div class="menu-item">
+          <i class="fas fa-cog"></i>&nbsp;&nbsp;Settings</div> -->
+        <div class="menu-item" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout</div>
+      </mat-card>
+    </div>
+  </div>
+</div>

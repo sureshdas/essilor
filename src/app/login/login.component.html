@@ -1,0 +1,53 @@
+<div fxFill fxLayout="row" class="container">
+  <!-- background image -->
+  <div fxFlex="50" style="overflow: hidden">
+    <img style="width: 100%;" src="assets/background-login.png">
+  </div>
+
+  <!-- login container -->
+  <div fxFlex="50" style="background: #fff;" fxLayoutAlign="center center">
+    <div class="login-container" fxLayout="row" fxLayoutAlign="center">
+      <div fxFlex="55%" class="login-box">
+        <div style="width: 100%;">
+          <img src="assets/logo.png" style="width: 100%;">
+        </div>
+        <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
+          <div class="text">
+            Welcome back! Please login to your account.
+          </div>
+          <div class="login-error" [hidden]="!error || isLoading" translate>
+            Username or password incorrect.
+          </div>
+          <br/>
+          <div fxLayout="column">
+            <mat-form-field>
+              <input type="text" matInput formControlName="username" autocomplete="username" [placeholder]="'Username' | translate" />
+              <mat-error *ngIf="loginForm.value.username.valid || loginForm.value.username.untouched">
+                <span translate>Username is required</span>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="password" matInput formControlName="password" autocomplete="current-password" [placeholder]="'Password' | translate"
+                required/>
+              <mat-error *ngIf="loginForm.value.password.valid || loginForm.value.password.untouched">
+                <span translate>Password is required</span>
+              </mat-error>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="space-between start">
+              <mat-checkbox color="primary" formControlName="remember" translate>Remember me</mat-checkbox>
+              <a style="position: relative; top: 14px;" href="">Forgot Password</a>
+            </div>
+            <br/>
+
+            <div fxLayout="row" fxLayoutAlign="space-between start" style="margin: 20px 0;">
+              <button fxFlex="47" mat-raised-button color="warn" type="submit" [disabled]="loginForm.invalid || isLoading">
+                <app-loader class="inline-loader" [isLoading]="isLoading"></app-loader>
+                <span translate>Login</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

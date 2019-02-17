@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="title">
+        Home / Products / {{pageTitle}}
+    </div>
+    <div class="content">
+        <div class="sub-title">{{pageTitle}} Product</div>
+        <div class="sub-content">
+            <mat-tab-group (focusChange)="tabChange($event)">
+                <mat-tab label="First">
+                    <form *ngIf="metaInfo" autocomplete="off" (ngSubmit)="updateProduct()">
+                        <app-dynamic-layout [layoutMeta]="metaInfo" [dataModel]="product" [componentDb]="componentDb"></app-dynamic-layout>
+                        <div>
+                            <input type="submit" class="m-button" value="Update">
+                            <button routerLink="/products" class="m-button">Cancel</button>
+                        </div>
+                    </form>
+                </mat-tab>
+            </mat-tab-group>
+            <!-- {{product | json}} -->
+        </div>
+    </div>
+</div>

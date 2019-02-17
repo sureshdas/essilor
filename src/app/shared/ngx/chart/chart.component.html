@@ -1,0 +1,13 @@
+<div *ngIf="metaInfo" class="chart">
+  <div fxLayout="row">
+    <h3 fxFlex="1 1 auto">{{metaInfo.data.title}}</h3>
+    <div fxFlex="0 0 auto">
+      <select class="dropdown">
+        <option>Last 7 Days</option>
+        <option>Last 15 Days</option>
+        <option>Last 1 Month</option>
+      </select>
+    </div>
+  </div>
+  <canvas style="margin: 0 auto" id="{{chartId}}"></canvas>
+</div>

@@ -1,0 +1,136 @@
+<div class="m-dialog-container" fxFlex>
+  <!-- search box -->
+  <div *ngIf="type == 'SEARCH'">
+
+    <div fxLayout="row" fxLayoutAlign="space-between" class="m-row">
+
+      <div fxFlex="48" class="input-container">
+        <div>
+          <span class="label-icon"></span>
+          <span class="label">{{label1}}</span>
+        </div>
+        <div>
+          <mat-form-field [floatLabel]="'never'" color="warn">
+            <mat-select [(value)]="selectedLabel1Value" color="red">
+              <mat-option>Select a Hero Image</mat-option>
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxFlex="48" class="input-container">
+        <div>
+          <span class="label-icon"></span>
+          <span class="label">{{label2}}</span>
+        </div>
+        <div>
+          <mat-form-field [floatLabel]="'never'" color="warn">
+            <mat-select [(value)]="selectedLabel2Value" color="red">
+              <mat-option>Select a Hero Image</mat-option>
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between" style="margin: 20px 0 0 0" class="m-row">
+
+      <div fxFlex="48" class="input-container">
+        <div>
+          <span class="label-icon"></span>
+          <span class="label">{{label3}}</span>
+        </div>
+        <div>
+          <mat-form-field [floatLabel]="'never'" color="warn">
+            <mat-select [(value)]="selectedLabel3Value" color="red">
+              <mat-option>Select a Hero Image</mat-option>
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxFlex="48" class="input-container">
+        <div>
+          <span class="label-icon"></span>
+          <span class="label">{{label4}}</span>
+        </div>
+        <div>
+          <mat-form-field [floatLabel]="'never'" color="warn">
+            <mat-select [(value)]="selectedLabel4Value" color="red">
+              <mat-option>Select a Hero Image</mat-option>
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center" style="margin: 20px 0 0 0" class="m-row">
+      <button mat-raised-button class="m-jumbo-button m-pointer">Search</button>
+    </div>
+  </div>
+  <!-- search box end -->
+  <!-- filters page -->
+  <div *ngIf="type == 'FILTER_PAGE'">
+    <div class="m-row">
+      <h2>{{action + label}}</h2>
+      <div style="margin: 20px 0" class="input-container">
+        <div>
+          <div>
+            <span class="label-icon"></span>
+            <span class="label">Name</span>
+          </div>
+          <div>
+            <mat-form-field [floatLabel]="'never'" color="primary" style="padding: 1px 0">
+              <input matInput [placeholder]="'Enter ' + label + ' Name'" [value]="labelValue" #input>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="margin: 20px 0 0 0;" class="m-row">
+      <mat-dialog-actions>
+        <button mat-raised-button class="m-jumbo-button m-pointer" [mat-dialog-close]="input.value" [disabled]="input.value.length === 0">{{action
+          + label}}</button>
+        <button mat-raised-button class="m-jumbo-button m-pointer" [mat-dialog-close]="false">Cancel</button>
+        <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+      </mat-dialog-actions>
+    </div>
+  </div>
+  <!-- filters page end -->
+
+  <div *ngIf="type == 'DELETE'">
+    <div class="m-row">
+      <h3>Are you sure you want to delete this ?</h3>
+
+    </div>
+    <div style="margin: 20px 0 0 0;" class="m-row">
+      <mat-dialog-actions>
+        <button mat-raised-button class="m-jumbo-button m-pointer" [mat-dialog-close]="true">Yes</button>
+        <button mat-raised-button class="m-jumbo-button m-pointer" [mat-dialog-close]="false">No</button>
+        <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+      </mat-dialog-actions>
+    </div>
+  </div>
+
+  <div *ngIf="type == 'PREVIEW'">
+    <div class="preview">
+      <img *ngIf="data.mediaType === 'IMAGE'" [src]="data.url">
+    </div>
+  </div>
+
+</div>

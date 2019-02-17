@@ -1,0 +1,50 @@
+.table-container {
+    padding: 10px 0;
+    width: 98%;
+    border-radius: 5px;
+    background: #fff;
+    height: 350px;
+    margin: 0 auto;
+    table {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        margin: 0;
+        overflow: auto;
+        thead {
+            margin: 0;
+            width: 100%;
+            min-width: 100%;
+            max-width: 100%;
+            background: rgb(238, 238, 238);
+        }
+        tbody {
+            margin: 0;
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+            tr:nth-child(2n) {
+                background: rgb(248, 248, 248);
+            }
+        }
+        tr {
+            max-width: 100%;
+            min-width: 100%;
+            width: 100%;
+        }
+        th,
+        td {
+            padding: 7px 5px;
+            word-wrap: break-word;
+            font-weight: normal;
+            font-style: normal;
+            text-align: left;
+        }
+    }
+}
+
+h3 {
+    text-align: left;
+    font-weight: normal;
+    padding-left: 10px;
+}

@@ -1,0 +1,22 @@
+<div *ngIf="layoutMeta" class="layout" [fxLayout]="layout">
+  <div *ngFor="let container of layoutMeta.structure" class="box" [fxFlex]="getFlex(container.position)">
+    <div *ngFor="let displayItem of container.component">
+      <div [ngSwitch]="displayItem.type">
+
+        <div *ngSwitchCase="'multi_component'" fxLayout="row" fxLayoutAlign="space-between start">
+          <!-- if the fields are to be displayed in a single row. -->
+          <!-- <div *ngFor="let component of displayItem.child_component" fxFlex="1 1 25%" style="display: inline-block"> -->
+          <div *ngFor="let component of displayItem.child_component" [fxFlex]="getFlexSize(displayItem.child_component)" style="display: inline-block">
+            <app-dynamic-component [details]="component" [componentDb]="componentDb"></app-dynamic-component>
+          </div>
+        </div>
+
+        <!-- Normal fields -->
+        <div *ngSwitchDefault style="width: 100%; display: block;">
+          <app-dynamic-component [details]="displayItem" [dataModel]="dataModel" [componentDb]="componentDb"></app-dynamic-component>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

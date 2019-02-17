@@ -1,0 +1,7 @@
+<div class="preview">
+  <img *ngIf="data.type === 'IMAGE'" [src]="url">
+  <embed style="height: 90vh" *ngIf="data.type === 'DOCUMENT'" [src]="url">
+  <video *ngIf="data.type === 'VIDEO'" controls>
+    <source [src]="url"> Your browser does not support the video tag.
+  </video>
+</div>

@@ -1,0 +1,53 @@
+<!-- <div fxFlex>
+  <mat-sidenav-container fxFill>
+    <mat-sidenav #sidenav mode="over" ngClass.gt-sm="has-border">
+      <nav>
+        <mat-list>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/home" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>Home</span>
+          </a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/about" routerLinkActive="active" (click)="sidenav.close()">
+            <span translate>About</span>
+          </a>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-header [sidenav]="sidenav"></app-header>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div> -->
+
+<div fxFlex fxLayout="column" class="root">
+  <div fxFlex="7" class="header">
+    <app-header></app-header>
+  </div>
+  <div fxFlex="93" fxLayout="row" class="body">
+    <div class="sidenav" fxFlex="15">
+      <nav>
+        <mat-list>
+
+          <a mat-list-item routerLink="/home" routerLinkActive="active">
+            <span translate>Dashboard</span>
+          </a>
+
+          <a mat-list-item routerLink="/products" routerLinkActive="active">
+            <span translate>Products</span>
+          </a>
+
+          <a mat-list-item routerLink="/users" routerLinkActive="active">
+            <span translate>Users</span>
+          </a>
+
+        </mat-list>
+      </nav>
+    </div>
+    <div class="content" fxFlex="85">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

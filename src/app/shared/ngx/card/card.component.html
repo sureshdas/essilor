@@ -1,0 +1,15 @@
+<div class="m-card" fxLayout="row">
+  <div class="icon-wrapper" fxFlex="40">
+    <div class="icon" [style.background]="metaInfo.background">
+      <i class="{{metaInfo.icon}}"></i>
+    </div>
+  </div>
+  <div fxFlex="60">
+    <div style="font-size: 40px;">
+      {{displayValue}}
+    </div>
+    <div>
+      {{metaInfo.label}}
+    </div>
+  </div>
+</div>

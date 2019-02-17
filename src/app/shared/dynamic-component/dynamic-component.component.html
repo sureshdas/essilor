@@ -1,0 +1,146 @@
+<div [ngSwitch]="details.type" class="borderr">
+
+  <!-- Search Field -->
+  <div class="component-contanier search" *ngSwitchCase="'search'">
+    <mat-form-field [floatLabel]="'never'">
+      <input matInput type="search" placeholder="Search ..." [(ngModel)]="searchItems" (focus)="onSearchFocus()" id="searchTerm">
+    </mat-form-field>
+
+    <div *ngIf="showSearch" class="search-results" appClickOutside (clickMatch)="toggleDisplay($event)">
+      <div class="row" *ngFor="let search of searchResults; let i = index">
+        <!-- <input type="checkbox" [value]="search" [id]="search._id"> <label [for]="search._id">{{search.name}}</label> -->
+        <mat-checkbox [value]="search" [checked]="search.checked" (change)="cCheckbox($event, i)">{{search.name}}</mat-checkbox>
+      </div>
+    </div>
+    <!-- {{searchItems}} -->
+  </div>
+
+  <!-- Button -->
+  <div class="component-container button" *ngSwitchCase="'button'">
+    <button class="m-button" (click)="buttonClick($event)">Add</button>
+  </div>
+
+  <!-- List -->
+  <div class="component-container list" *ngSwitchCase="'list'">
+    <table>
+      <tr fxLayout="row" *ngFor="let row of listData">
+        <td fxFlex="1 1 auto">{{row.name}}</td>
+        <td fxFlex="0 0 auto" style="padding: 0 5px;">
+          <span>
+            <i (click)="deleteListItem(row.mappedId)" class="material-icons">
+              delete
+            </i>
+          </span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Images -->
+  <div class="component-container medias" *ngSwitchCase="'media'">
+
+    <!-- upload button -->
+    <div *ngIf="this.details.has_upload_button" class="media-container" style="position: relative; top: -28px;">
+      <input type="file" style="display: none" #inputFile (change)="uploadMedia($event, 'UPLOAD')">
+      <div style="background: rgb(228, 227, 227); width: 100%; height: 100%; padding: 0; margin: 0" class="thumbnail" appDropzone
+        (fileDrop)="uploadMedia($event, 'DROP')">
+        <span style="display: inline-block; width: 100%; height: auto;text-align: center; font-size: 80%; line-height: .9;">
+          <span style="display: inline-block; width: 100%; height: auto;">
+            <i class="material-icons">
+              cloud_upload
+            </i>
+          </span>
+          Drag & drop your files or
+          <a style="color: rgb(136, 10, 10)" (click)="inputFile.click()">Browse</a>
+        </span>
+      </div>
+    </div>
+
+    <!-- list of media -->
+    <div class="media-container" *ngFor="let media of mediaData">
+      <div class="thumbnail">
+        <img (click)="showPreview(serverIp + media.path, 'IMAGE')" *ngIf="media.mediaType === 'IMAGE'" [src]="serverIp + media.path">
+        <img (click)="showPreview(serverIp + media.path, 'DOCUMENT')" *ngIf="media.mediaType === 'DOC'" src="assets/document-placeholder.png">
+        <img (click)="showPreview(serverIp + media.path, 'VIDEO')" *ngIf="media.mediaType === 'VIDEO'" src="assets/video-placeholder.jpeg">
+      </div>
+      <span (click)="deleteMedia(media._id)" class="delete">
+        x
+        <!-- <i class="material-icons">remove_circle_outline</i> -->
+      </span>
+      <span class="title">{{media.name}}</span>
+    </div>
+  </div>
+
+  <!-- Textarea -->
+  <div class="component-container textarea" *ngSwitchCase="'text_area'">
+    <!-- <mat-form-field [floatLabel]="'never'"> -->
+    <textarea style="width: 90%;" rows="15" [(ngModel)]="dataModel[details.fieldId]"></textarea>
+    <!-- </mat-form-field> -->
+  </div>
+
+  <!-- Title -->
+  <div class="component-container title" *ngSwitchCase="'title'">
+    <h3>{{details.title}}</h3>
+  </div>
+
+  <!-- recreating fields from dynamic-field component -->
+  <!-- Textbox -->
+  <div class="component-container text" *ngSwitchCase="'text'">
+    <div class="input-container">
+      <div class="label-container">
+        <span class="label-icon"></span>
+        <label [attr.for]="details.name" class="label">{{details.label}}</label>
+      </div>
+      <div class="field-container">
+        <mat-form-field [floatLabel]="'never'">
+          <input matInput type="text" [id]="details.name" [placeholder]="details.label" [required]="details.required" [name]="details.name"
+            [(ngModel)]="dataModel[details.fieldId]">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden Field -->
+  <div class="component-container hidden" *ngSwitchCase="'hidden'">
+    <input type="hidden" [id]="details.name">
+  </div>
+
+  <!-- Password Field -->
+  <div class="component-container password" *ngSwitchCase="'password'">
+    <!-- <input type="hidden" [id]="details.name"> -->
+    <app-password-field [metaInfo]="details" [model]="dataModel"></app-password-field>
+  </div>
+
+  <!-- Card Field -->
+  <div class="component-container card" *ngSwitchCase="'card'">
+    <app-card [metaInfo]="details" [model]="dataModel"></app-card>
+  </div>
+
+  <!-- Table Field -->
+  <div class="component-container" *ngSwitchCase="'table'">
+    <app-table [metaInfo]="details" [model]="dataModel"></app-table>
+  </div>
+
+  <!-- Chart Field -->
+  <div class="component-container" *ngSwitchCase="'chart'">
+    <app-chart [metaInfo]="details" [model]="dataModel"></app-chart>
+  </div>
+
+  <!-- Dropdown -->
+  <div class="component-container select" *ngSwitchCase="'select'">
+    <div class="input-container">
+      <div class="label-container">
+        <span class="label-icon"></span>
+        <label [attr.for]="details.name" class="label">{{details.label}}</label>
+      </div>
+      <div class="field-container">
+        <mat-form-field [floatLabel]="'never'">
+          <mat-select [id]="details.name" [placeholder]="details.label" [multiple]="details.multi">
+            <mat-option *ngFor="let option of dropdownOptions" [value]="option._id">{{option.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+</div>

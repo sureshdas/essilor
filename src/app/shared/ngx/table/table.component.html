@@ -1,0 +1,17 @@
+<div class="table-container">
+  <h3>{{metaInfo.data.title}}</h3>
+  <table>
+    <thead>
+      <tr class="header">
+        <th *ngFor="let column of metaInfo.data.columns">{{column.displayName}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data">
+        <td *ngFor="let col of metaInfo.data.columns">
+          {{row[col.key]}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
